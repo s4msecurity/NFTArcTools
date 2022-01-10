@@ -1,0 +1,16 @@
+{
+  "name": "NFTArcTools",
+  "version": "1.0.0",
+  "description": "This script was developed by S4mSecurity and is completely free. Its main purpose is to produce images automatically by combining different types of images.",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "merge-images": "^2.0.0",
+    "sharp": "^0.29.3"
+  },
+  "type": "commonjs"
+}
