@@ -7,7 +7,7 @@ module.exports.compositeImages = async function compositeImages() {
     await sharp("./picture/face.jpg")
       .composite([
         {
-          input: "./resize/anon.jpg",
+          input: "./picture/face_1.jpg",
           top: 10,
           left: 50,
         },
@@ -26,7 +26,7 @@ module.exports.reSizePic =  async function reSizePic(file, w, h) {
       height: h
     })
       .toFormat("jpg", { mozjpeg: true })
-      .toFile("./resize/anon.jpg")
+      .toFile("./picture/resize/anon.jpg")
   } catch (err) {
     return "reSizePic :"+err
   }
