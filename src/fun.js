@@ -1,7 +1,6 @@
 const sharp = require("sharp");
 
-
-/* resim birlestirme */
+/* resim birlestirme 
 module.exports.compositeImages = async function compositeImages() {
   try {
     await sharp("./picture/face.jpg")
@@ -17,8 +16,9 @@ module.exports.compositeImages = async function compositeImages() {
     return "compositeImages :"+err
   }
 }
+*/
 
-/* Yeniden boyutlandirma */
+/* Yeniden boyutlandirma 
 module.exports.reSizePic =  async function reSizePic(file, w, h) {
   try {
     await sharp(file).resize({
@@ -31,20 +31,21 @@ module.exports.reSizePic =  async function reSizePic(file, w, h) {
     return "reSizePic :"+err
   }
 }
+*/
 
 /* ana resim bilgilerini getirme */
-module.exports.getMetaData =  async function getMetaData(file,type) {
+module.exports.getMetaData = async function getMetaData(file, type) {
   try {
     const mData = await sharp(file).metadata();
-    res = 0
+    let res = 0
     switch (type) {
-      case 'width':
+      case 'width': //width info
         res = mData.width
         break
-      case 'height':
+      case 'height': //height info
         res = mData.height
         break
-      case 'format':
+      case 'format': //general info
         res = mData.format
         break
       default:
@@ -55,7 +56,3 @@ module.exports.getMetaData =  async function getMetaData(file,type) {
     return err
   }
 }
-
- 
-
-

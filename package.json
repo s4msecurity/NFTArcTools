@@ -4,6 +4,7 @@
   "description": "This script was developed by S4mSecurity and is completely free. Its main purpose is to produce images automatically by combining different types of images.",
   "main": "run.js",
   "scripts": {
+    "start": "node start.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
