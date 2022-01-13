@@ -3,43 +3,42 @@ const { logo } = require("./src/logo")
 const readline = require("readline")
 
 
+
+/* Readline console terminali open */
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
+/* Logo */
+logo()
 
-/*
-reSizePic("./picture/anon.jpg", 650,600)
-compositeImages()
-*/
 
-result = ""
-fPath  =""
+/* Get Picture Data */
+var result, fPath
 
-function getInfo(callback){
+function getPictureInfo(callback){
     setTimeout(() =>{
-        result = getMetaData(__dirname+"\\picture\\"+fPath, "width")
+        result = getMetaData(__dirname+"\\picture\\"+fPath, "")
         callback()
     }, 100)
 }
 
 function writer(){
     setTimeout(() => {
-        Promise.resolve(result).then(function(resul) {
-            console.log(result)
+        Promise.resolve(result).then(function(res) {
+            console.log("width: "+res.width)
+            console.log("height: "+res.height)
         })
     }, 100)
 }
 
-
-rl.question("\n| Select folder for picture: ", function (answer) {
+rl.question("\n| Which variants of the painting will be created?: ", function (answer) {
     if (answer) {
         fPath = answer
         if(fPath != ""){                
-            getInfo(writer)
+            getPictureInfo(writer)
         }
     }
-    rl.close()
+    //rl.close()
 })
-
