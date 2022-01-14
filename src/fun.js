@@ -1,4 +1,5 @@
 const sharp = require("sharp");
+const path = require("path")
 
 /* pic composite */
 module.exports.compositeImages = async function compositeImages() {
@@ -13,22 +14,22 @@ module.exports.compositeImages = async function compositeImages() {
       ])
       .toFile("./result/result.jpg");
   } catch (err) {
-    return "compositeImages :"+err
+    return "Error compositeImages :"+err
   }
 }
 
 
 /* again resize */
-module.exports.reSizePic =  async function reSizePic(file, w, h) {
+module.exports.reSizePic =  async function reSizePic(fileName,newFileName, w, h) {
   try {
-    await sharp(file).resize({
+    await sharp(path.join(__dirname, "../", "picture", fileName)).resize({
       width: w,
       height: h
     })
       .toFormat("jpg", { mozjpeg: true })
-      .toFile("./picture/resize/anon.jpg")
+      .toFile(path.join(__dirname, "../", "picture", newFileName))
   } catch (err) {
-    return "reSizePic :"+err
+    return "Error reSizePic :"+err
   }
 }
 
@@ -40,6 +41,6 @@ module.exports.getMetaData = async function getMetaData(file, type) {
     let res = mData
     return res
   } catch (err) {
-    return err
+    return  "Error getMetaData "+err
   }
 }
