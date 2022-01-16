@@ -2,13 +2,7 @@ const { getMetaData, reSizePic, compositeImages } = require("./fun")
 const path = require("path")
 const fs = require("fs")
 
-
 var w = 0, h = 0
-
-function reSizePicture(fName, w,h) {
-    console.log("File Name: "+fName+"\n"+"Width: "+w+"\n"+"Height: "+h)
-}
-
 
 /* Get Picture Data */
 async function getPictureInfo(fName) {
@@ -21,8 +15,13 @@ async function getPictureInfo(fName) {
         console.log(err)
     }
 }
-module.exports.rGetInf = function rGetInf(fName) {
+module.exports.rGetInf = async function rGetInf(fName) {
+    try{
     getPictureInfo(fName)
+    }
+    catch(err){
+        console.log("[E] Error rGetInf")
+    }
 }
 
 /* Get in Directory */
@@ -34,14 +33,19 @@ async function getDirectoryData(dirInPicName) {
                 console.log("Error readdir: " + err)
             }
             data.forEach(function (value) {
-                if (dirInPicName != value) {
-                    reSizePicture(value, w,h)
+                if (dirInPicName != value) {   
+                    reSizePic(value, "resize_"+i+".jpeg", w ,h)
+                    if(i <= data.length){
+                        i++
+                    }
                 }
             })
-
+            if(i <= data.length){
+                console.log("[!] Resizing is complete. Total number of resized images: "+i)
+            }
         })
     }
     catch(err){
-        console.log("Error getDirectoryData: "+err)
+        console.log("[E] Error getDirectoryData: "+err)
     }
 }

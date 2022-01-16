@@ -14,7 +14,7 @@ module.exports.compositeImages = async function compositeImages() {
       ])
       .toFile("./result/result.jpg");
   } catch (err) {
-    return "Error compositeImages :"+err
+    return "[E] Error compositeImages :"+err
   }
 }
 
@@ -27,9 +27,9 @@ module.exports.reSizePic =  async function reSizePic(fileName,newFileName, w, h)
       height: h
     })
       .toFormat("jpg", { mozjpeg: true })
-      .toFile(path.join(__dirname, "../", "picture", newFileName))
+      .toFile(path.join(__dirname, "../", "resize", newFileName))
   } catch (err) {
-    return "Error reSizePic :"+err
+    return "[E] Error reSizePic :"+err
   }
 }
 
@@ -41,6 +41,6 @@ module.exports.getMetaData = async function getMetaData(file, type) {
     let res = mData
     return res
   } catch (err) {
-    return  "Error getMetaData "+err
+    return  "[E] Error getMetaData "+err
   }
 }
