@@ -1,37 +1,63 @@
 const { rGetInf } = require("./src/run")
-const { logo } = require("./src/logo")
-const readline = require("readline")
+const { logo, txtColor } = require("./src/logo")
+const readline = require("readline-sync");
 
-var type = "", left = 0, rigth = 0
+var type = "", left = 0, top = 0, fName = ""
 
-
-/* Readline console terminali open */
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-
-async function start(){  
-    rl.question("\n[?] Which variants of the painting will be created?: ", function (answer) {
-        if (answer != "") {
-                rGetInf(answer)
-        }
-        rl.close()
-    })
+function manuelCreater(){
+    left = readline.question(txtColor("[?]","?")+" How many pixels should be entered from the left?: ")
+    top = readline.question(txtColor("[?]","?")+" How many pixels should be entered from the top?: ")
+    if((left.charCodeAt(0) >= 47 && left.charCodeAt(0) <= 57) && (top.charCodeAt(0) >= 47 && top.charCodeAt(0) <= 57)){
+        
+    }
+    else{
+        console.log(txtColor("[E]","E")+" Please enter a numeric value.")
+        manuelCreater()
+    }
+    
 }
 
-async function createdType(){
-    rl.question("\n[?] How many images do you want to produce?: ", function(answer){
-        if(answer != ""){
-            console.log("Youre request: "+answer)
-        }
-    })
-    rl.close()
+function randomCreater(){
+    console.log("random selected")
 }
 
+function createStart(type) {
+    try {
+        switch (type) {
+            case "R":
+                randomCreater()
+                break
+            case "r":
+                randomCreater()
+                break
+            case "M":
+                manuelCreater()
+                break
+            case "m":
+                manuelCreater()
+                break
+            default:
+                console.log(txtColor("[!]", "!") + " Please enter R and M.")
+                appStat()
+            return type
+        }
+    } catch (err) {
+        console.log(txtColor("[E]", "E") + " createdType: " + err)
+    }
+}
 
-/* Logo */
-logo()
-/* Start func */
-start()
+function resizeStart(fName) {
+    try {
+        rGetInf(fName)
+    } catch (err) {
+        console.log(txtColor("[E]", "E") + " onceStart: " + err)
+        return false
+    }
+}
+//logo()
+function appStat() {
+    fName = resizeStart(readline.question(txtColor("[?]", "?") + " Which variants of the painting will be created?: "))
+    createStart(readline.question(txtColor("[?]", "?") + " How about the type of rendering the images? Enter [R/r] for random, [M/m] for manual entry: "))    
+}
+
+appStat()

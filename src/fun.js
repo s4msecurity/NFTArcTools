@@ -1,20 +1,22 @@
 const sharp = require("sharp");
+const {txtColor} = require("./logo")
 const path = require("path")
 
+
 /* pic composite */
-module.exports.compositeImages = async function compositeImages() {
+module.exports.compositeImages = async function compositeImages(PName, inPName, top, left, resultPicture) {
   try {
-    await sharp("./picture/face.jpg")
+    await sharp("./picture/face.jpg") //mom picture
       .composite([
         {
-          input: "./picture/face_1.jpg",
+          input: "./picture/face_1.jpg", //picture for add
           top: 10,
           left: 50,
         },
       ])
-      .toFile("./result/result.jpg");
+      .toFile("./result/result.jpg"); //result picture
   } catch (err) {
-    return "[E] Error compositeImages :"+err
+    return txtColor("[E]","E")+" compositeImages :"+err
   }
 }
 
@@ -29,7 +31,7 @@ module.exports.reSizePic =  async function reSizePic(fileName,newFileName, w, h)
       .toFormat("jpg", { mozjpeg: true })
       .toFile(path.join(__dirname, "../", "resize", newFileName))
   } catch (err) {
-    return "[E] Error reSizePic :"+err
+    return txtColor("[E]","E")+" reSizePic :"+err
   }
 }
 
@@ -41,6 +43,6 @@ module.exports.getMetaData = async function getMetaData(file, type) {
     let res = mData
     return res
   } catch (err) {
-    return  "[E] Error getMetaData "+err
+    return  txtColor("[E]","E")+" getMetaData "+err
   }
 }
