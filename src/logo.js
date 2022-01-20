@@ -24,16 +24,16 @@ module.exports.txtColor = function txtColor(text, type) {
     var txtReturn
     switch (type) {
         case "E":
-            txtReturn = color.red(text)
+            txtReturn = color.red("[E] ")+text
             break
         case "!":
-            txtReturn = color.yellow(text)
+            txtReturn = color.yellow("[!] ")+text
             break
         case "?":
-            txtReturn = color.cyan(text)
+            txtReturn = color.cyan("[?] ")+text
             break
         case "*":
-            txtReturn = color.green(text)
+            txtReturn = color.green("[*] ")+text
             break
         default:
             txtReturn

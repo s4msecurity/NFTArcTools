@@ -9,7 +9,7 @@ async function pictureControl(path) {
     try {
         return fs.statSync(path).isFile()
     } catch (err) {
-        console.log(txtColor("[E]","E")+" pictureControl: "+err)
+        console.log(txtColor("pictureControl : ","E")+" "+err)
         return false
     }
 }
@@ -26,11 +26,11 @@ async function getPictureInfo(fName) {
             await getResizeDirectoryData(fName)
             return true
         } catch (err) {
-            console.log(txtColor("[E]","E")+" getPictureInfo: "+err)
+            console.log(txtColor("getPictureInfo : ","E")+" "+err)
         }
     }
     else{
-        console.log(txtColor("[!]","!")+" File not exist!")
+        console.log(txtColor("File not exist!","!"))
     }
 }
 
@@ -39,7 +39,7 @@ module.exports.rGetInf = async function rGetInf(fName) {
         getPictureInfo(fName)
     }
     catch (err) {
-        console.log(txtColor("[E]","E")+" rGetInf: "+err)
+        console.log(txtColor("rGetInf : ","E")+" "+err)
     }
 }
 
@@ -49,7 +49,7 @@ async function getResizeDirectoryData(dirInPicName) {
         var i = 0
         fs.readdir(path.join(__dirname, "../", "picture"), function (err, data) {
             if (err) {
-                console.log(txtColor("[E]","E")+" readdir: " + err)
+                console.log(txtColor("readdir :","E")+" " + err)
             }
             data.forEach(function (value) {
                 if (dirInPicName != value) {
@@ -60,11 +60,11 @@ async function getResizeDirectoryData(dirInPicName) {
                 }
             })
             if (i <= data.length) {
-                console.log(txtColor("[*]","*")+" Resizing is complete. Total number of resized images: " + i)
+                console.log(txtColor("Resizing is complete. Total number of resized images : ","*")+" " + i)
             }
         })
     }
     catch (err) {
-        console.log(txtColor("[E]","E")+" getDirectoryData: " + err)
+        console.log(txtColor("getDirectoryData : ","E")+" " + err)
     }
 }
