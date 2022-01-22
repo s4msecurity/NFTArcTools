@@ -4,17 +4,17 @@ const path = require("path")
 
 
 /* pic composite */
-module.exports.compositeImages = async function compositeImages(PName, inPName, top, left, resultPicture) {
+module.exports.compositeImages = async function compositeImages(fName, inputPictureName, ntop, nleft, resultPictureName) {
   try {
-    await sharp("./picture/face.jpg") //mom picture
+    await sharp(path.join(__dirname, "../", "picture", fName)) //mom picture
       .composite([
         {
-          input: "./picture/face_1.jpg", //picture for add
-          top: 10,
-          left: 50,
+          input: path.join(__dirname, "../", "resize", inputPictureName), //picture for add
+          top: parseInt(ntop),
+          left: parseInt(nleft),
         },
       ])
-      .toFile("./result/result.jpg"); //result picture
+      .toFile(path.join(__dirname, "../", "result", resultPictureName+".jpg")); //result picture
   } catch (err) {
     return txtColor("compositeImages :","E")+" "+err
   }
@@ -28,7 +28,7 @@ module.exports.reSizePic =  async function reSizePic(fileName,newFileName, w, h)
       width: w,
       height: h
     })
-      .toFormat("jpg", { mozjpeg: true })
+      .toFormat("png", { mozpng: true })
       .toFile(path.join(__dirname, "../", "resize", newFileName))
   } catch (err) {
     return txtColor("reSizePic :","E")+" "+err
