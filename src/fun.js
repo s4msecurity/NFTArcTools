@@ -25,8 +25,8 @@ module.exports.compositeImages = async function compositeImages(fName, inputPict
 module.exports.reSizePic =  async function reSizePic(fileName,newFileName, w, h) {
   try {
     await sharp(path.join(__dirname, "../", "picture", fileName)).resize({
-      width: w,
-      height: h
+      width: parseInt(w),
+      height: parseInt(h)
     })
       .toFormat("png", { mozpng: true })
       .toFile(path.join(__dirname, "../", "resize", newFileName))

@@ -2,7 +2,7 @@ const { rGetInf, completPicture } = require("./src/run")
 const { logo, txtColor } = require("./src/logo")
 const readline = require("readline-sync");
 
-var left = 0, top = 0, fName = ""
+var left = 0, top = 0, fName = "", wPicture = 0, hPicture = 0
 
 const resulSyncFun = async () => {
     await setTimeout(function () {
@@ -11,18 +11,50 @@ const resulSyncFun = async () => {
 
 }
 
+
+async function maneulCreateParameter(mType) {
+
+    if (mType == "M" || mType == "m") {
+
+        wPicture = readline.question(txtColor("Enter the width values of the images : ", "?"))
+        hPicture = readline.question(txtColor("Enter the height values of the images : ", "?"))
+
+        if (
+            (left.charCodeAt(0) >= 47 && left.charCodeAt(0) <= 57) &&
+            (top.charCodeAt(0) >= 47 && top.charCodeAt(0) <= 57) &&
+            (wPicture.charCodeAt(0) >= 47 && wPicture.charCodeAt(0) <= 57) &&
+            (hPicture.charCodeAt(0) >= 47 && hPicture.charCodeAt(0) <= 57)
+        ) {
+            rGetInf(fName, wPicture, hPicture)
+            resulSyncFun()
+        }
+        else {
+            console.log(txtColor("Please enter a numeric value.", "E"))
+            manuelCreater()
+        }
+    }
+    else if (mType == "A" || mType == "a") {
+        if ((left.charCodeAt(0) >= 47 && left.charCodeAt(0) <= 57) && (top.charCodeAt(0) >= 47 && top.charCodeAt(0) <= 57)) {
+            rGetInf(fName, 0 ,0)
+            resulSyncFun()
+        }
+        else {
+            console.log(txtColor("Please enter a numeric value.", "E"))
+            manuelCreater()
+        }
+    }
+    else {
+        console.log(txtColor("Please enter [A/a] or [M/m].", "!"))
+        manuelCreater()
+    }
+}
+
+
 async function manuelCreater() {
     left = readline.question(txtColor("How many pixels should be entered from the left? : ", "?"))
     top = readline.question(txtColor("How many pixels should be entered from the top? : ", "?"))
-    if ((left.charCodeAt(0) >= 47 && left.charCodeAt(0) <= 57) && (top.charCodeAt(0) >= 47 && top.charCodeAt(0) <= 57)) {
-        rGetInf(fName)
-        resulSyncFun()
-    }
-    else {
-        console.log(txtColor("Please enter a numeric value.", "E"))
-        manuelCreater()
-    }
-
+    mType = readline.question(txtColor("Should the height and width settings be manual [M/m] or automatic [A/a]? : ", "?"))
+    maneulCreateParameter(mType)
 }
 
 function randomCreater() {

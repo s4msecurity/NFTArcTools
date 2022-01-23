@@ -15,18 +15,34 @@ async function pictureControl(path) {
 }
 
 /* Get Picture Data */
-async function getPictureInfo(fName) {
+async function getPictureInfo(fName, pWidth, pHeight) {
 
     var exist = await pictureControl(path.join(__dirname, "../", "picture", fName))
+
     if (exist == true) {
-        try {
-            mDataResult = await getMetaData(path.join(__dirname, "../", "picture", fName), "") //home picture pix data
-            w = mDataResult.width
-            h = mDataResult.height
-            await getResizeDirectoryData(fName)
-            return true
-        } catch (err) {
-            console.log(txtColor("getPictureInfo : ", "E") + " " + err)
+        if (pWidth != 0 && pHeight != 0) {
+            try {
+                w = pWidth
+                h = pHeight
+                await getResizeDirectoryData(fName)
+                return true
+            } catch (err) {
+                console.log(txtColor("width & height : ", "E") + " " + err)
+            }
+        }
+        else if (pWidth == 0 && pHeight == 0) {
+            try {
+                mDataResult = await getMetaData(path.join(__dirname, "../", "picture", fName), "") //home picture pix data
+                w = mDataResult.width
+                h = mDataResult.height
+                await getResizeDirectoryData(fName)
+                return true
+            } catch (err) {
+                console.log(txtColor("getPictureInfo : ", "E") + " " + err)
+            }
+        }
+        else{
+            console.log(txtColor("Enter the correct width and height information.","!"))
         }
     }
     else {
@@ -62,7 +78,7 @@ async function getResizeDirectoryData(dirInPicName) {
 
 
 module.exports.completPicture = async function completPicture(left, top, fName) {
-    
+
     try {
         var i = 0
         fs.readdir(path.join(__dirname, "../", "resize"), function (err, data) {
@@ -70,7 +86,7 @@ module.exports.completPicture = async function completPicture(left, top, fName) 
                 console.log(txtColor("readdir :", "E") + " " + err)
             }
             data.forEach(function (value) {
-                compositeImages(fName,value,top,left,"result_"+i)
+                compositeImages(fName, value, top, left, "result_" + i)
                 if (fName != value) {
                     if (i <= data.length) {
                         i++
@@ -87,9 +103,9 @@ module.exports.completPicture = async function completPicture(left, top, fName) 
     }
 }
 
-module.exports.rGetInf = async function rGetInf(fName) {
+module.exports.rGetInf = async function rGetInf(fName, width, height) {
     try {
-        getPictureInfo(fName)
+        getPictureInfo(fName, width, height)
         return true
     }
     catch (err) {
