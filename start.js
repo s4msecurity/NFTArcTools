@@ -1,4 +1,4 @@
-const { rGetInf, completPicture } = require("./src/run")
+const { rGetInf, manuelCompletPicture } = require("./src/run")
 const { logo, txtColor } = require("./src/logo")
 const readline = require("readline-sync");
 
@@ -6,11 +6,10 @@ var left = 0, top = 0, fName = "", wPicture = 0, hPicture = 0
 
 const resulSyncFun = async () => {
     await setTimeout(function () {
-        completPicture(left, top, fName)
+        manuelCompletPicture(left, top, fName)
     }, 3000)
 
 }
-
 
 async function maneulCreateParameter(mType) {
 
@@ -25,7 +24,7 @@ async function maneulCreateParameter(mType) {
             (wPicture.charCodeAt(0) >= 47 && wPicture.charCodeAt(0) <= 57) &&
             (hPicture.charCodeAt(0) >= 47 && hPicture.charCodeAt(0) <= 57)
         ) {
-            rGetInf(fName, wPicture, hPicture)
+            rGetInf(fName, wPicture, hPicture, "m")
             resulSyncFun()
         }
         else {
@@ -35,7 +34,7 @@ async function maneulCreateParameter(mType) {
     }
     else if (mType == "A" || mType == "a") {
         if ((left.charCodeAt(0) >= 47 && left.charCodeAt(0) <= 57) && (top.charCodeAt(0) >= 47 && top.charCodeAt(0) <= 57)) {
-            rGetInf(fName, 0 ,0)
+            rGetInf(fName, 0, 0, "m")
             resulSyncFun()
         }
         else {
@@ -49,7 +48,6 @@ async function maneulCreateParameter(mType) {
     }
 }
 
-
 async function manuelCreater() {
     left = readline.question(txtColor("How many pixels should be entered from the left? : ", "?"))
     top = readline.question(txtColor("How many pixels should be entered from the top? : ", "?"))
@@ -58,7 +56,9 @@ async function manuelCreater() {
 }
 
 function randomCreater() {
-    console.log("random selected")
+    let say = readline.question(txtColor("How many random images should be generated? : ", "?"))
+    rGetInf(fName, 0, 0, "a", say)
+
 }
 
 function createStart(type) {

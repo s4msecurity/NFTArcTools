@@ -16,7 +16,7 @@ module.exports.compositeImages = async function compositeImages(fName, inputPict
       ])
       .toFile(path.join(__dirname, "../", "result", resultPictureName+".jpg")); //result picture
   } catch (err) {
-    return txtColor("compositeImages :","E")+" "+err
+    console.log(txtColor("compositeImages :","E")+" "+err)
   }
 }
 
@@ -28,10 +28,10 @@ module.exports.reSizePic =  async function reSizePic(fileName,newFileName, w, h)
       width: parseInt(w),
       height: parseInt(h)
     })
-      .toFormat("png", { mozpng: true })
-      .toFile(path.join(__dirname, "../", "resize", newFileName))
+      .toFormat("jpeg", { mozjpeg: true })
+      .toFile(path.join(__dirname, "../", "resize", newFileName))    
   } catch (err) {
-    return txtColor("reSizePic :","E")+" "+err
+    console.log(txtColor("reSizePic :","E")+" "+err)
   }
 }
 
