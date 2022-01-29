@@ -15,6 +15,8 @@ This tool is based on NodeJS. Overwrites the selected picture with other picture
       <li>sharp</li>
     </ul>
   </li>
+  <li>In command line go to folder directory and type "npm install" for installation. Or run "install.bat" if your system Windows.</li>
+  <li>In command line go to folder directory and type "npm start" for runing. Or run "NFTArcTool.bat" if your system Windows.</li>
 </ul>
 <hr/>
 <h2>Basic Operation Logic</h2>
