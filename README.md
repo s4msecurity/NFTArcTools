@@ -37,22 +37,22 @@ This tool is based on NodeJS. Overwrites the selected picture with other picture
   <li> The picture you want to produce is selected. (For example: face.png) </li>  
 </ol>  
 <h4>Look At the Result Directory</h4>
-![image](https://user-images.githubusercontent.com/81925511/151658835-3231e1c6-2293-47ca-bb03-9c506fd25e39.png)
+<img src="https://user-images.githubusercontent.com/81925511/151658835-3231e1c6-2293-47ca-bb03-9c506fd25e39.png">
 <br/>
 As seen in the picture above, all pictures are mixed and random.
 <h3>2. How to generation with Manuel</h3>
 <ol>
   <li>The picture whose types are desired to be created is selected.</li>
   <li>Other pictures, the main picture is chosen in which area to focus. Left and top values are entered.</li>
-  <li>
-![image](https://user-images.githubusercontent.com/81925511/151659332-4a280767-b864-40e6-9204-e261224f5e1f.png)
-  </li>
+  <br/>
+<img src="https://user-images.githubusercontent.com/81925511/151659332-4a280767-b864-40e6-9204-e261224f5e1f.png">
+  
   <li>
     You can set the height and width values of the images yourself or keep them at their own scale automatically.
   </li>
 </ol>
 <h4>Look At The Result Directory</h4>
-![image](https://user-images.githubusercontent.com/81925511/151659408-29443451-c82a-4018-94c1-8dd70ad6deba.png)
+<img src="https://user-images.githubusercontent.com/81925511/151659408-29443451-c82a-4018-94c1-8dd70ad6deba.png">
 
 
 
