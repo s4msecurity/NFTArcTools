@@ -19,7 +19,16 @@ This tool is based on NodeJS. Overwrites the selected picture with other picture
 <hr/>
 <h2>Basic Operation Logic</h2>
 <p>
-  All pictures are put under the folder named "picture". And the values are entered on the screen as desired to be produced. Other images of the scales of the image to be produced are located under the "resize" folder. And you can find the results under the "result" folder.
+  All pictures are put under the folder named "picture".
+  <br/>
+  <img src="https://user-images.githubusercontent.com/81925511/151659601-076d471b-84fa-48d5-851f-5de554d405e8.png">
+  <br/>
+  And the values are entered on the screen as desired to be produced. Other images of the scales of the image to be produced are located under the "resize" folder.     <br/>
+  <image src="https://user-images.githubusercontent.com/81925511/151659629-d95499b6-7826-4602-bde9-03e0c4f192b2.png">
+  <br/>
+  And you can find the results under the "result" folder.
+  <br/>
+  <img src="https://user-images.githubusercontent.com/81925511/151659641-5881e1bc-c098-490c-a409-33f9abd98204.png">
 <br/>Enjoyable productions.
   </p>
 <h2>Basic image generation is in two ways:</h2>
